@@ -855,6 +855,7 @@ footer {
   <a href="#home" onclick="closeMobile()">Home</a>
   <a href="#expertise" onclick="closeMobile()">Expertise</a>
   <a href="#work" onclick="closeMobile()">Work</a>
+  <a href="portfolio.html" onclick="closeMobile()">Portfolio</a>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
@@ -865,6 +866,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#work">Work</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1011,9 +1013,10 @@ footer {
       <div class="work-metric">4M+<div class="work-metric-label">Video Views Accumulated</div></div>
     </div>
   </div>
+  <div style="text-align:center; margin-top: 48px;">
+    <a href="portfolio.html" class="btn-gold reveal" style="display:inline-block;">View Full Portfolio Gallery →</a>
+  </div>
 </section>
-
-<!-- ══════════════ CLIENTS ══════════════ -->
 <div id="clients">
   <p class="clients-label reveal">Brands I've worked with</p>
   <div class="clients-grid reveal">
@@ -1112,9 +1115,9 @@ footer {
         <div class="contact-link-icon">📞</div>
         +254 706 521 130
       </a>
-      <a href="mailto:kimanigeorge2010@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#7b1012161a15121c1e14091c1e494b4a4b3b1c161a121755181416" class="contact-link">
         <div class="contact-link-icon">✉</div>
-        kimanigeorge2010@gmail.com
+        <span class="__cf_email__" data-cfemail="89e2e0e4e8e7e0eeece6fbeeecbbb9b8b9c9eee4e8e0e5a7eae6e4">[email&#160;protected]</span>
       </a>
       <a href="https://linkedin.com/in/george-kimani" target="_blank" class="contact-link">
         <div class="contact-link-icon">in</div>
@@ -1125,7 +1128,7 @@ footer {
         behance.net/kimanigeorge
       </a>
     </div>
-    <a href="mailto:kimanigeorge2010@gmail.com" class="btn-gold reveal">Send Me a Brief</a>
+    <a href="/cdn-cgi/l/email-protection#d4bfbdb9b5babdb3b1bba6b3b1e6e4e5e494b3b9b5bdb8fab7bbb9" class="btn-gold reveal">Send Me a Brief</a>
   </div>
 </section>
 
@@ -1135,7 +1138,7 @@ footer {
   <div class="footer-copy">© 2026 · Creative Producer & Brand Strategist · Nairobi</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -1168,13 +1171,4 @@ footer {
   }
 
   // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+  const r
