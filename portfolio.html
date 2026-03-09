@@ -230,6 +230,34 @@ nav {
   position: absolute; inset: 0;
   background: linear-gradient(135deg, rgba(160,120,60,0.08) 0%, transparent 60%);
 }
+
+.work-item-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.work-item:hover .work-item-visual img { transform: scale(1.04); }
+
+/* Lightbox */
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:1000; align-items:center; justify-content:center; flex-direction:column; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:82vh; object-fit:contain; }
+.lightbox-close { position:absolute; top:20px; right:28px; font-size:32px; color:white; cursor:pointer; background:none; border:none; line-height:1; }
+.lightbox-nav { display:flex; gap:16px; margin-top:20px; flex-wrap:wrap; justify-content:center; }
+.lightbox-thumb { width:64px; height:48px; object-fit:cover; cursor:pointer; opacity:0.5; border:2px solid transparent; transition:all 0.2s; }
+.lightbox-thumb.active, .lightbox-thumb:hover { opacity:1; border-color:var(--gold); }
+.lightbox-caption { color:rgba(247,242,234,0.6); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin-top:12px; }
+.lightbox-arrows { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; padding:0 24px; transform:translateY(-50%); pointer-events:none; }
+.lightbox-arrow { pointer-events:all; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; font-size:20px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.2s; }
+.lightbox-arrow:hover { background:rgba(160,120,60,0.4); border-color:var(--gold); }
+
+/* Bueno gallery strip */
+.bueno-thumbs { display:flex; gap:4px; padding:8px 10px; background:rgba(0,0,0,0.3); }
+.bueno-thumb { width:52px; height:38px; object-fit:cover; cursor:pointer; opacity:0.55; border:1px solid transparent; transition:all 0.2s; border-radius:1px; }
+.bueno-thumb:hover, .bueno-thumb.active { opacity:1; border-color:var(--gold-light); }
+
 .work-item-visual-label {
   position: absolute; bottom: 14px; right: 14px;
   font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -447,10 +475,20 @@ footer {
     <a class="work-item work-item-featured tint-intl reveal reveal-delay-1"
        href="https://sites.google.com/view/kimanigeorge/about/international-assignments/bueno-chocolate-range"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">🍫</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Packaging Design</div>
+      <div class="work-item-visual" style="position:relative;overflow:hidden;" onclick="openLightbox('bueno',0)" title="View gallery">
+        <img src="images/bueno-pos-range.jpg" alt="Kinder Bueno Range — Packaging Design by Kg." id="bueno-hero-img">
+        <div class="work-item-visual-label">Packaging Design · Click to view gallery</div>
+        <div class="bueno-thumbs" onclick="event.stopPropagation()">
+          <img class="bueno-thumb active" src="images/bueno-pos-range.jpg" onclick="swapBueno(this,'images/bueno-pos-range.jpg')" alt="Range poster">
+          <img class="bueno-thumb" src="images/bueno-pos-lifestyle1.jpg" onclick="swapBueno(this,'images/bueno-pos-lifestyle1.jpg')" alt="Lifestyle 1">
+          <img class="bueno-thumb" src="images/bueno-pos-lifestyle2.jpg" onclick="swapBueno(this,'images/bueno-pos-lifestyle2.jpg')" alt="Lifestyle 2">
+          <img class="bueno-thumb" src="images/bueno-2bar-classic.jpg" onclick="swapBueno(this,'images/bueno-2bar-classic.jpg')" alt="2-bar classic">
+          <img class="bueno-thumb" src="images/bueno-2bar-white.jpg" onclick="swapBueno(this,'images/bueno-2bar-white.jpg')" alt="2-bar white">
+          <img class="bueno-thumb" src="images/bueno-2bar-dark.jpg" onclick="swapBueno(this,'images/bueno-2bar-dark.jpg')" alt="2-bar dark">
+          <img class="bueno-thumb" src="images/bueno-6bar-classic.jpg" onclick="swapBueno(this,'images/bueno-6bar-classic.jpg')" alt="6-bar classic">
+          <img class="bueno-thumb" src="images/bueno-6bar-white.jpg" onclick="swapBueno(this,'images/bueno-6bar-white.jpg')" alt="6-bar white">
+          <img class="bueno-thumb" src="images/bueno-6bar-dark.jpg" onclick="swapBueno(this,'images/bueno-6bar-dark.jpg')" alt="6-bar dark">
+        </div>
       </div>
       <div class="work-item-body">
         <div class="award-badge">🏆 International Winner · 2025</div>
@@ -565,10 +603,9 @@ footer {
     <a class="work-item tint-tv reveal reveal-delay-3"
        href="https://sites.google.com/view/kimanigeorge/about/television/solar-power-chloride-solar"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">☀️</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Television</div>
+      <div class="work-item-visual" onclick="openLightbox('chloride',0)" title="View gallery" style="cursor:pointer;">
+        <img src="images/chloride-woman.jpg" alt="Chloride Solar Campaign">
+        <div class="work-item-visual-label">Print · Click to view</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Chloride Solar</div>
@@ -581,10 +618,9 @@ footer {
     <a class="work-item tint-tv reveal reveal-delay-4"
        href="https://sites.google.com/view/kimanigeorge/about/television/cadbury-drinking-chocolate-television"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">🍫</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Television</div>
+      <div class="work-item-visual" onclick="openLightbox('cadbury',0)" title="View gallery" style="cursor:pointer;">
+        <img src="images/cadbury-women.jpg" alt="Cadbury Drinking Chocolate Campaign">
+        <div class="work-item-visual-label">Television · Click to view</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Cadbury</div>
@@ -612,10 +648,9 @@ footer {
     <a class="work-item tint-print reveal reveal-delay-1"
        href="https://sites.google.com/view/kimanigeorge/about/print/kws-fathers-day"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">🦁</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Print</div>
+      <div class="work-item-visual" onclick="openLightbox('kws',0)" title="View gallery" style="cursor:pointer;">
+        <img src="images/kws-lion.jpg" alt="KWS Father's Day — Lion">
+        <div class="work-item-visual-label">Print · Click to view gallery</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Kenya Wildlife Services</div>
@@ -628,10 +663,9 @@ footer {
     <a class="work-item tint-print reveal reveal-delay-2"
        href="https://sites.google.com/view/kimanigeorge/about/print/chloride-solar"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">⚡</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Print</div>
+      <div class="work-item-visual" onclick="openLightbox('chloride',1)" title="View gallery" style="cursor:pointer;">
+        <img src="images/chloride-man.jpg" alt="Chloride Solar Print Campaign">
+        <div class="work-item-visual-label">Print · Click to view</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Chloride Solar</div>
@@ -644,10 +678,9 @@ footer {
     <a class="work-item tint-print reveal reveal-delay-3"
        href="https://sites.google.com/view/kimanigeorge/about/print/kcc-delite-yogurt"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">🍦</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Print</div>
+      <div class="work-item-visual" onclick="openLightbox('kcc',0)" title="View gallery" style="cursor:pointer;">
+        <img src="images/kcc-burger.jpg" alt="KCC Delite Yoghurt Campaign">
+        <div class="work-item-visual-label">Print · Click to view gallery</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">KCC</div>
@@ -676,10 +709,9 @@ footer {
     <a class="work-item tint-print reveal reveal-delay-2"
        href="https://sites.google.com/view/kimanigeorge/about/print/nairobi-securities-exchange"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">📈</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Print</div>
+      <div class="work-item-visual" onclick="openLightbox('nse',0)" title="View gallery" style="cursor:pointer;">
+        <img src="images/nse-kettle.jpg" alt="NSE — See Your Business Grow">
+        <div class="work-item-visual-label">Print · Click to view gallery</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Nairobi Securities Exchange</div>
@@ -708,10 +740,9 @@ footer {
     <a class="work-item tint-print reveal reveal-delay-1"
        href="https://sites.google.com/view/kimanigeorge/about/print/cadbury-drinking-chocolate"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">☕</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Print</div>
+      <div class="work-item-visual" onclick="openLightbox('cadbury',1)" title="View" style="cursor:pointer;">
+        <img src="images/cadbury-couple.jpg" alt="Cadbury Drinking Chocolate Print">
+        <div class="work-item-visual-label">Print · Click to view</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Cadbury</div>
@@ -839,21 +870,35 @@ footer {
 <section class="gallery-section tint-book" data-section="book">
   <div class="gallery-section-header reveal">
     <div>
-      <div class="gallery-section-cat">Publishing</div>
-      <h2 class="gallery-section-title">Book Cover Design</h2>
+      <div class="gallery-section-cat">Illustration & Publishing</div>
+      <h2 class="gallery-section-title">Books & Illustration</h2>
     </div>
     <div class="gallery-section-rule"></div>
-    <div class="gallery-section-count">2 projects</div>
+    <div class="gallery-section-count">3 projects</div>
   </div>
   <div class="gallery-grid grid-2">
+    <a class="work-item work-item-featured tint-book reveal reveal-delay-1"
+       href="https://sites.google.com/view/kimanigeorge/about/book-cover/in-good-stead"
+       target="_blank" rel="noopener" style="background:#f5a623!important;">
+      <div class="work-item-visual" style="background:#e8940f;min-height:280px;">
+        <img src="images/hugo-hippo.jpg" alt="Hugo Hippo's Fun Book at the East African Coast">
+        <div class="work-item-visual-label">Illustration · Amazon · 1994</div>
+      </div>
+      <div class="work-item-body" style="background:var(--warm);">
+        <div class="award-badge" style="background:rgba(232,148,15,0.15);border-color:rgba(232,148,15,0.4);color:#8a5a00;">✏️ Where the journey began</div>
+        <div class="work-item-client">Children's Book · Amazon</div>
+        <div class="work-item-title">Hugo Hippo's Fun Book at the East African Coast</div>
+        <div class="work-item-desc">Illustrated in 1994 — the very first commission of a 30+ year creative career. Published on Amazon and sold internationally. Co-illustrated with Samwel Ngoje. Text by Bridget King and Susan Salm.</div>
+        <div class="work-item-link">View on Google Sites <span class="work-item-link-arrow">→</span></div>
+      </div>
+    </a>
 
     <a class="work-item tint-book reveal reveal-delay-1"
        href="https://sites.google.com/view/kimanigeorge/about/book-cover/in-good-stead"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
-        <div class="work-item-visual-icon">📖</div>
-        <div class="work-item-visual-overlay"></div>
-        <div class="work-item-visual-label">Book Cover</div>
+      <div class="work-item-visual" onclick="openLightbox('ingoodstead',0)" title="View gallery" style="cursor:pointer;">
+        <img src="images/in-good-stead-flat.jpg" alt="In Good Stead Book Cover">
+        <div class="work-item-visual-label">Book Cover · Click to view</div>
       </div>
       <div class="work-item-body">
         <div class="work-item-client">Publishing</div>
@@ -866,7 +911,7 @@ footer {
     <a class="work-item tint-book reveal reveal-delay-2"
        href="https://sites.google.com/view/kimanigeorge/about/book-cover/a-pillar-of-hope"
        target="_blank" rel="noopener">
-      <div class="work-item-visual">
+      <div class="work-item-visual" style="background:#1a0d0d;">
         <div class="work-item-visual-icon">📚</div>
         <div class="work-item-visual-overlay"></div>
         <div class="work-item-visual-label">Book Cover</div>
@@ -991,5 +1036,130 @@ footer {
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 </script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-arrows">
+    <button class="lightbox-arrow" onclick="lightboxNav(-1)">&#8592;</button>
+    <button class="lightbox-arrow" onclick="lightboxNav(1)">&#8594;</button>
+  </div>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div class="lightbox-nav" id="lightbox-thumbs"></div>
+</div>
+
+<script>
+const galleries = {
+  kws: {
+    images: ['images/kws-lion.jpg','images/kws-cheetah.jpg','images/kws-hippo.jpg'],
+    captions: ['KWS Father's Day — The Lion','KWS Father's Day — The Cheetah','KWS Father's Day — The Hippo']
+  },
+  nse: {
+    images: ['images/nse-kettle.jpg','images/nse-transport.jpg','images/nse-farm.jpg'],
+    captions: ['NSE GEMS — See Your Business Grow (Kettle series)','NSE GEMS — Grow Your Business (Transport series)','NSE GEMS — Grow Your Revenue (Farm series)']
+  },
+  kcc: {
+    images: ['images/kcc-burger.jpg','images/kcc-fries.jpg','images/kcc-sugar.jpg'],
+    captions: ['KCC Delite — Those Light Snacks Weigh You Down','KCC Delite — Most Fast Foods Eventually Slow You Down','KCC Delite — There's Nothing Sweet About Excess Sugar']
+  },
+  ingoodstead: {
+    images: ['images/in-good-stead-flat.jpg','images/in-good-stead-3d.jpg'],
+    captions: ['In Good Stead — Cover Design (flat)','In Good Stead — Cover Design (3D mockup)']
+  },
+  bueno: {
+    images: [
+      'images/bueno-pos-range.jpg',
+      'images/bueno-pos-lifestyle1.jpg',
+      'images/bueno-pos-lifestyle2.jpg',
+      'images/bueno-2bar-classic.jpg',
+      'images/bueno-2bar-white.jpg',
+      'images/bueno-2bar-dark.jpg',
+      'images/bueno-6bar-classic.jpg',
+      'images/bueno-6bar-white.jpg',
+      'images/bueno-6bar-dark.jpg',
+    ],
+    captions: [
+      'Full Range POS Poster','Lifestyle POS — Grab the Pleasure','Lifestyle POS — Grab the Pleasure',
+      '2-Bar Pack — Classic','2-Bar Pack — White','2-Bar Pack — Dark',
+      '6-Bar Pack — Classic','6-Bar Pack — White','6-Bar Pack — Dark',
+    ]
+  },
+  cadbury: {
+    images: ['images/cadbury-women.jpg','images/cadbury-couple.jpg'],
+    captions: ['Cadbury Drinking Chocolate — Women','Cadbury Drinking Chocolate — Couple']
+  },
+  kws: {
+    images: ['images/kws-lion.jpg','images/kws-cheetah.jpg','images/kws-hippo.jpg'],
+    captions: ['KWS Father's Day — Lion: Treat Him Like the Cool Cat He Is','KWS Father's Day — Cheetah: Treat Him Like the Cool Cat He Is','KWS Father's Day — Hippo: Treat Him Like the Swimming King He Is']
+  },
+  nse: {
+    images: ['images/nse-kettle.jpg','images/nse-van.jpg','images/nse-tractor.jpg'],
+    captions: ['NSE GEMS — See Your Business Grow (Kettle)','NSE GEMS — Grow Your Business (Van)','NSE GEMS — Grow Your Revenue (Tractor)']
+  },
+  kcc: {
+    images: ['images/kcc-burger.jpg','images/kcc-fries.jpg','images/kcc-sugar.jpg'],
+    captions: ['KCC Delite — Those Light Snacks Weigh You Down','KCC Delite — Most Fast Foods Slow You Down','KCC Delite — There's Nothing Sweet About Excess Sugar']
+  },
+  ingoodstead: {
+    images: ['images/in-good-stead-flat.jpg','images/in-good-stead-3d.jpg'],
+    captions: ['In Good Stead — Book Cover (Flat)','In Good Stead — Book Cover (3D Render)']
+  },
+  hugo: {
+    images: ['images/hugo-hippo.jpg'],
+    captions: ['Hugo Hippo's Fun Book at the East African Coast — Illustrated by George W. Kimani, 1994']
+  },
+  chloride: {
+    images: ['images/chloride-woman.jpg','images/chloride-man.jpg','images/chloride-baby.jpg'],
+    captions: ['Chloride Solar — Woman','Chloride Solar — Man','Chloride Solar — Baby']
+  }
+};
+
+let currentGallery = null, currentIndex = 0;
+
+function openLightbox(gallery, index) {
+  currentGallery = gallery; currentIndex = index;
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('open');
+  renderLightbox();
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function renderLightbox() {
+  const g = galleries[currentGallery];
+  document.getElementById('lightbox-img').src = g.images[currentIndex];
+  document.getElementById('lightbox-caption').textContent = g.captions[currentIndex];
+  const thumbs = document.getElementById('lightbox-thumbs');
+  thumbs.innerHTML = g.images.map((src, i) =>
+    `<img class="lightbox-thumb${i===currentIndex?' active':''}" src="${src}" onclick="lightboxGo(${i})">`
+  ).join('');
+}
+function lightboxGo(i) { currentIndex = i; renderLightbox(); }
+function lightboxNav(dir) {
+  const g = galleries[currentGallery];
+  currentIndex = (currentIndex + dir + g.images.length) % g.images.length;
+  renderLightbox();
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') lightboxNav(1);
+  if (e.key === 'ArrowLeft') lightboxNav(-1);
+});
+
+// Bueno hero swap
+function swapBueno(thumb, src) {
+  document.getElementById('bueno-hero-img').src = src;
+  document.querySelectorAll('.bueno-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+</script>
+
 </body>
 </html>

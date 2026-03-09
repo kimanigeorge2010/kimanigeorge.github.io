@@ -572,7 +572,7 @@ nav.scrolled {
 #about { background: var(--warm); }
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 220px 1fr 1fr;
   gap: 80px;
   align-items: start;
 }
@@ -835,7 +835,7 @@ footer {
   .section { padding: 64px 24px; }
   .expertise-grid { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-portrait { flex-direction: row; align-items: center; gap: 24px; }
   .clients-grid { grid-template-columns: repeat(3, 1fr); }
   #clients { padding: 60px 24px; }
   #contact { padding: 80px 24px; }
@@ -1014,6 +1014,18 @@ footer {
       <div class="work-result">Integrated digital campaign spanning television, OOH, and online video. Developed and executed the full creative strategy, generating exceptional organic reach.</div>
       <div class="work-metric">4M+<div class="work-metric-label">Video Views Accumulated</div></div>
     </div>
+    <div class="work-card reveal reveal-delay-1" style="grid-column:span 2;display:grid;grid-template-columns:220px 1fr;gap:0;">
+      <div style="overflow:hidden;background:#f5a623;">
+        <img src="images/hugo-hippo.jpg" alt="Hugo Hippo's Fun Book — Illustrated by Kg." style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s ease;">
+      </div>
+      <div style="padding:40px;">
+        <div class="work-tag">Illustration · Published on Amazon · 1994</div>
+        <div class="work-title">Hugo Hippo's Fun Book at the East African Coast</div>
+        <div class="work-client">Children's Book Publishing</div>
+        <div class="work-result">The work that started it all. Illustrated at the start of a 30+ year creative career — published on Amazon and sold internationally. Co-illustrated with Samwel Ngoje, with text by Bridget King and Susan Salm.</div>
+        <div class="work-metric" style="font-size:22px;">1994<div class="work-metric-label">Where the journey began</div></div>
+      </div>
+    </div>
   </div>
   <div style="text-align:center; margin-top: 48px;">
     <a href="portfolio.html" class="btn-gold reveal" style="display:inline-block;">View Full Portfolio Gallery →</a>
@@ -1045,7 +1057,25 @@ footer {
     <div class="section-rule"></div>
   </div>
   <div class="about-grid">
+    <div class="about-portrait reveal" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px;">
+      <div style="width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid var(--rule);">
+        <img src="images/kg-portrait-sq.jpg" alt="Kimani George Mwangi — Kg." style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);">Kimani George</div>
+        <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-top:6px;">Kg. · Creative Producer</div>
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-top:4px;">Nairobi, Kenya</div>
+      </div>
+    </div>
     <div class="about-left reveal">
+      <div style="display:flex;gap:32px;align-items:flex-start;margin-bottom:36px;">
+        <img src="images/kg-portrait.jpg" alt="Kimani George — Kg." style="width:110px;height:140px;object-fit:cover;object-position:center top;filter:grayscale(20%);flex-shrink:0;border-bottom:3px solid var(--gold);">
+        <div>
+          <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Kimani George Mwangi</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;line-height:1.2;margin-bottom:6px;">Creative Producer<br>Brand Strategist<br>Illustrator</div>
+          <div style="font-size:12px;color:var(--grey);letter-spacing:0.08em;">Nairobi, Kenya &nbsp;·&nbsp; Est. 1994</div>
+        </div>
+      </div>
       <blockquote class="about-quote">
         Great creative work is never an accident. It is the product of clear strategy, deep craft, and the courage to say something that matters.
       </blockquote>
