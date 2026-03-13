@@ -1284,7 +1284,7 @@ footer {
       <div class="carousel" data-carousel>
         <div class="carousel-track">
           <img src="Cadbury Chocolate - print 1.jpg" alt="Cadbury Drinking Chocolate — Wherever Whenever">
-          <img src="Cadbury Chocolate — print 2.jpg" alt="Cadbury Drinking Chocolate — What's in Your Cup">
+          <img src="Cadbury Chocolate - print 2.jpg" alt="Cadbury Drinking Chocolate — What's in Your Cup">
         </div>
         <button class="carousel-btn prev">&#8249;</button>
         <button class="carousel-btn next">&#8250;</button>
@@ -1573,14 +1573,4 @@ footer {
       e.stopPropagation(); goTo(current + 1);
     });
     dots.forEach(function(d, i) {
-      d.addEventListener('click', function(e) { e.stopPropagation(); goTo(i); });
-    });
-
-    // Lightbox on image click
-    imgs.forEach(function(img) {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', function(e) {
-        e.stopPropagation();
-        openLightbox(img.src);
-      });
-    });
+      d.addEv
